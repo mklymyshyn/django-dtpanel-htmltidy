@@ -1,0 +1,6 @@
+*.pyc
+*.DS_Store
+*~
+.venv
+django_dtpanel_htmltidy.egg-info/
+*.egg

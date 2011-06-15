@@ -1,0 +1,32 @@
+{% load i18n %}
+<script type="text/javascript" charset="utf-8" src="/__htmltidy_debug__/m/js/htmltidypanel.min.js"></script>
+<link rel="stylesheet" href="/__htmltidy_debug__/m/css/htmltidypanel.min.css" type="text/css" media="screen" />
+
+<br /><br />
+<fieldset class="djDebug-htmlvalidator-summary" id="djDebug-htmlvalidator">
+	<legend>{% trans "Current page have following errors" %}:</legend>
+	<table>
+		<tr>
+			<th>{% trans "Position" %}</th>
+			<th>{% trans "Error or Warning" %}</th>
+		</tr>
+		{% for err in errors %}
+		<tr class="position-handler">
+			{{ err|safe }}
+		</tr>
+		{% endfor %}
+	</table>
+	
+	<h3>{% trans "Content" %}:</h3>
+	<form action="" class="repr-content" method="get" accept-charset="utf-8">
+		{% for lineno, line in lines %}
+		<div class="repr-line-{{ lineno }}">
+			<strong class="line-number" id="repr-line-{{ lineno }}">{{ lineno }}</strong>
+			<pre class="repr-content-code">{{ line }}</pre>
+		</div>
+		<div class="clean"></div>
+		{% endfor %}
+	</form>
+	<a href="#djDebug-htmlvalidator" class="repr-line-backtotop" id="repr-line-backtotop">&uarr;</a>
+</fieldset>
+<hr />
