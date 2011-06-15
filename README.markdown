@@ -1,6 +1,5 @@
-====================
 HTML Tidy/Validator Panel for Django Debug Toolbar
-====================
+========
 
 The Django Debug Toolbar is a configurable set of panels that display various
 debug information about the current request/response and when clicked, display
@@ -12,33 +11,35 @@ validate your HTML and display warning and errors as panel.
 Panel code based on PyTidyLib
 
 Installation & Configuration
-============
+-----------------
 
-#. Install and configure `django-debug-toolbar` app
+1. Install and configure `django-debug-toolbar` app
 
-#. Add the `debug_toolbar_htmltidy` directory to your Python path.
+1. Add the `debug_toolbar_htmltidy` directory to your Python path.
 
-#. Add `debug_toolbar_htmltidy` to your `INSTALLED_APPS` in `settings.py` file:
-	INSTALLED_APPS += (
-		'debug_toolbar_htmltidy',
-	)
+1. Add `debug_toolbar_htmltidy` to your `INSTALLED_APPS` in `settings.py` file:
 
-#. Add the following panel to your Django Debug Toolbar panels
+    INSTALLED_APPS += (
+        'debug_toolbar_htmltidy',
+    )
+
+1. Add the following panel to your Django Debug Toolbar panels
    configuration tuple in `settings.py` file:
 
-	DEBUG_TOOLBAR_PANELS = (
-		...
-		'debug_toolbar_htmltidy.panels.HTMLTidyDebugPanel',
-	)
+    DEBUG_TOOLBAR_PANELS = (
+        ...
+        'debug_toolbar_htmltidy.panels.HTMLTidyDebugPanel',
 
-#. Include in file which specified in `ROOT_URLCONF` setting in `settings.py`
+    )
+
+1. Include in file which specified in `ROOT_URLCONF` setting in `settings.py`
    url to `HTMLTidyDebugPanel` media:
 
-	url(r'^', include('debug_toolbar_htmltidy.urls'))
+    url(r'^', include('debug_toolbar_htmltidy.urls'))
 
 
 Running the Tests
-=================
+-----------------
 
 The HTML Tidy Panel for Django Debug Toolbar includes a test suite
 ::
@@ -73,4 +74,4 @@ Tests result
 
 TODOs and BUGS
 ==============
-See: https://github.com/joymax/django-dtpanel-htmltidy/issues
+See: [issue tracker on github](https://github.com/joymax/django-dtpanel-htmltidy/issues)

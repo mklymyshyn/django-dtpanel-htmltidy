@@ -4,7 +4,7 @@ setup(
     name='django-dtpanel-htmltidy',
     version='0.1.1',
     description='Custom panel form Django Debug Toolbar which display HTML Validation errors and warnings',
-    long_description=open('README.rst').read(),
+    long_description=open('README.markdown').read(),
     # Get more strings from http://www.python.org/pypi?:action=list_classifiers
     author='Max Klymyshyn',
     author_email='klymyshyn@gmail.com',
