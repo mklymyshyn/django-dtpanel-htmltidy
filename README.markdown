@@ -1,3 +1,4 @@
+
 HTML Tidy/Validator Panel for Django Debug Toolbar
 ========
 
@@ -18,24 +19,25 @@ Installation & Configuration
 1. Add the `debug_toolbar_htmltidy` directory to your Python path.
 
 1. Add `debug_toolbar_htmltidy` to your `INSTALLED_APPS` in `settings.py` file:
-
-    INSTALLED_APPS += (
-        'debug_toolbar_htmltidy',
-    )
+***
+        INSTALLED_APPS += (
+            'debug_toolbar_htmltidy',
+        )
 
 1. Add the following panel to your Django Debug Toolbar panels
    configuration tuple in `settings.py` file:
 
-    DEBUG_TOOLBAR_PANELS = (
-        ...
-        'debug_toolbar_htmltidy.panels.HTMLTidyDebugPanel',
-
-    )
+***
+        DEBUG_TOOLBAR_PANELS = (
+	    ...
+	    'debug_toolbar_htmltidy.panels.HTMLTidyDebugPanel',
+        )
 
 1. Include in file which specified in `ROOT_URLCONF` setting in `settings.py`
    url to `HTMLTidyDebugPanel` media:
 
-    url(r'^', include('debug_toolbar_htmltidy.urls'))
+***
+    	url(r'^', include('debug_toolbar_htmltidy.urls'))
 
 
 Running the Tests
