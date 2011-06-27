@@ -31,7 +31,6 @@ Installation & Configuration
 
 1. Add the following panel to your Django Debug Toolbar panels
    configuration tuple in `settings.py` file:
-
 ***
         DEBUG_TOOLBAR_PANELS = (
 	    ...
@@ -40,7 +39,6 @@ Installation & Configuration
 
 1. Include in file which specified in `ROOT_URLCONF` setting in `settings.py`
    url to `HTMLTidyDebugPanel` media:
-
 ***
     	url(r'^', include('debug_toolbar_htmltidy.urls'))
 
