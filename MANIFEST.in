@@ -1,5 +1,5 @@
 include AUTHORS
 include LICENSE
-include README.rst
+include README.markdown
 recursive-include debug_toolbar_htmltidy/static *
 recursive-include debug_toolbar_htmltidy/templates *

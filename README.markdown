@@ -14,6 +14,11 @@ Panel code based on PyTidyLib
 Installation & Configuration
 -----------------
 
+1. Please, make sure that you have `tidy` librart installed:
+
+  * `libtidy-dev` for Ubuntu
+  * `tidy` for Mac Ports (Mac OS X)
+
 1. Install and configure `django-debug-toolbar` app
 
 1. Add the `debug_toolbar_htmltidy` directory to your Python path.
