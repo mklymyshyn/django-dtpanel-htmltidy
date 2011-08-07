@@ -6,6 +6,8 @@ from django.test import TestCase
 
 from dingus import Dingus
 
+import os
+
 
 class Settings(object):
     """Allows you to define settings that are required
@@ -34,6 +36,11 @@ class BaseTestCase(TestCase):
     def setUp(self):
         settings.DEBUG = True
         settings.DEBUG_TOOLBAR_PANELS = self.panels_list
+        settings.TEMPLATE_DIRS = (
+                os.path.join(
+                    os.path.dirname(os.path.abspath(__file__)),
+                    'templates/'),
+                )
 
         request = Dingus('request')
         toolbar = DebugToolbar(request)
