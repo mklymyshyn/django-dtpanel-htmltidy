@@ -41,6 +41,7 @@ class BaseTestCase(TestCase):
                     os.path.dirname(os.path.abspath(__file__)),
                     'templates/'),
                 )
+        settings.MIDDLEWARE_CLASSES = ()
 
         request = Dingus('request')
         toolbar = DebugToolbar(request)
