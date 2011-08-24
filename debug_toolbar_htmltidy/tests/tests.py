@@ -41,7 +41,11 @@ class BaseTestCase(TestCase):
                     os.path.dirname(os.path.abspath(__file__)),
                     'templates/'),
                 )
-        settings.MIDDLEWARE_CLASSES = ()
+        settings.MIDDLEWARE_CLASSES = (
+            'django.middleware.common.CommonMiddleware',
+            'django.contrib.sessions.middleware.SessionMiddleware',
+            'django.contrib.auth.middleware.AuthenticationMiddleware',
+        )
 
         request = Dingus('request')
         toolbar = DebugToolbar(request)
