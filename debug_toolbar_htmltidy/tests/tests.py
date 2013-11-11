@@ -34,6 +34,11 @@ class Settings(object):
 
 class BaseTestCase(TestCase):
     def setUp(self):
+        self.OLD_DEBUG = settings.DEBUG
+        self.OLD_DEBUG_TOOLBAR_PANELS = settings.DEBUG_TOOLBAR_PANELS
+        self.OLD_TEMPLATE_DIRS = settings.TEMPLATE_DIRS
+        self.OLD_MIDDLEWARE_CLASSES = settings.MIDDLEWARE_CLASSES
+        
         settings.DEBUG = True
         settings.DEBUG_TOOLBAR_PANELS = self.panels_list
         settings.TEMPLATE_DIRS = (
@@ -53,6 +58,12 @@ class BaseTestCase(TestCase):
 
         self.request = request
         self.toolbar = toolbar
+        
+    def tearDown(self):
+        settings.DEBUG = self.OLD_DEBUG
+        settings.DEBUG_TOOLBAR_PANELS = self.OLD_DEBUG_TOOLBAR_PANELS
+        settings.TEMPLATE_DIRS = self.TEMPLATE_DIRS
+        settings.MIDDLEWARE_CLASSES = self.OLD_MIDDLEWARE_CLASSES
 
     def panel(self):
         for panel in self.toolbar.panels:
