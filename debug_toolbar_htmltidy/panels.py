@@ -76,8 +76,11 @@ class HTMLTidyDebugPanel(DebugPanel):
 
         return errors_rt
 
+    @property
     def content(self):
-        context = self.context.copy()
+        context = dict()
+        if hasattr(self, 'context'):
+            context = self.context.copy()
 
         document, errors = self.log_data
         lines = self.src_content.split("\n")
