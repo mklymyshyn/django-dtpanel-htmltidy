@@ -10,10 +10,10 @@ from django.template.loader import render_to_string
 from django.utils.translation import ugettext_lazy as _
 from django.utils.safestring import mark_safe
 
-from debug_toolbar.panels import DebugPanel
+from debug_toolbar.panels import Panel
 
 
-class HTMLTidyDebugPanel(DebugPanel):
+class HTMLTidyDebugPanel(Panel):
     name = "HTMLTidy"
     has_content = True
 
