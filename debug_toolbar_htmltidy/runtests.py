@@ -6,7 +6,11 @@ from django.conf import settings
 
 if not settings.configured:
     settings.configure(
-        DATABASE_ENGINE='sqlite3',
+        DATABASES={
+            'default': {
+                'ENGINE': 'django.db.backends.sqlite3',
+            }
+        },
         INSTALLED_APPS=[
             'django.contrib.contenttypes',
             'django.contrib.auth',
@@ -21,30 +25,29 @@ if not settings.configured:
         ],
         ROOT_URLCONF='debug_toolbar_htmltidy.tests.urls',
         MIDDLEWARE_CLASSES=[
-        'django.middleware.common.CommonMiddleware',
-        'django.contrib.sessions.middleware.SessionMiddleware',
-        'django.contrib.auth.middleware.AuthenticationMiddleware',
-        'debug_toolbar.middleware.DebugToolbarMiddleware',
+            'django.middleware.common.CommonMiddleware',
+            'django.contrib.sessions.middleware.SessionMiddleware',
+            'django.contrib.auth.middleware.AuthenticationMiddleware',
+            'debug_toolbar.middleware.DebugToolbarMiddleware',
         ],
         TEMPLATE_DEBUG=True,
         DEBUG=True,
         SITE_ID=1,
-        
+        DEBUG_TOOLBAR_PANELS=['debug_toolbar_htmltidy.panels.HTMLTidyDebugPanel'],
     )
 
-from django.test.simple import run_tests
+from django.test.utils import get_runner
 
 
 def runtests(*test_args):
     if not test_args:
         test_args = ['debug_toolbar_htmltidy']
-    parent = os.path.join(
-        os.path.dirname(os.path.abspath(__file__)),
-        "..",
-        #"..",
-    )
+    app_dir = os.path.dirname(os.path.abspath(__file__))
+    parent = os.path.join(app_dir, '..')
     sys.path.insert(0, parent)
-    failures = run_tests(test_args, verbosity=2, interactive=True)
+    runner_class = get_runner(settings)
+    test_runner = runner_class(pattern='*s.py', verbosity=2, interactive=True)
+    failures = test_runner.run_tests(test_args)
     sys.exit(failures)
 
 

@@ -13,12 +13,12 @@ setup(
     license='BSD',
     packages=find_packages(exclude=['ez_setup']),
     tests_require=[
-        'django',
-        'django-debug-toolbar',
+        'django>=1.4.2',
+        'django-debug-toolbar>=1.0',
         'dingus',
     ],
     install_requires=[
-       'pytidylib',
+        'pytidylib',
     ],
     test_suite='debug_toolbar_htmltidy.runtests.runtests',
     include_package_data=True,

@@ -1,4 +1,4 @@
-from debug_toolbar.toolbar.loader import DebugToolbar
+from debug_toolbar.toolbar import DebugToolbar
 from debug_toolbar_htmltidy.panels import HTMLTidyDebugPanel
 
 from django.conf import settings
@@ -54,7 +54,6 @@ class BaseTestCase(TestCase):
 
         request = Dingus('request')
         toolbar = DebugToolbar(request)
-        toolbar.load_panels()
 
         self.request = request
         self.toolbar = toolbar
@@ -62,7 +61,7 @@ class BaseTestCase(TestCase):
     def tearDown(self):
         settings.DEBUG = self.OLD_DEBUG
         settings.DEBUG_TOOLBAR_PANELS = self.OLD_DEBUG_TOOLBAR_PANELS
-        settings.TEMPLATE_DIRS = self.TEMPLATE_DIRS
+        settings.TEMPLATE_DIRS = self.OLD_TEMPLATE_DIRS
         settings.MIDDLEWARE_CLASSES = self.OLD_MIDDLEWARE_CLASSES
 
     def panel(self):
@@ -129,7 +128,7 @@ class HTMLValidationDebugPanelTestCase(ViewBasedTestCase):
         resp = self.fetch_view()
         panel = self.panel()
         panel.process_response(self.request, resp)
-        html = panel.content()
+        html = panel.content
 
         self.assertTrue('/__htmltidy_debug__/m/js/htmltidypanel.min.js' \
                         in html)
